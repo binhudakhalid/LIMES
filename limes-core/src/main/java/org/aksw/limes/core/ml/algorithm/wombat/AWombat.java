@@ -297,20 +297,28 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	 * @return initial classifiers
 	 */
 	protected final List<ExtendedClassifier> findInitialClassifiers() {
-		
-		setProperties();
-		
 		logger.debug("Geting all initial classifiers ...");
+		setProperties();
 		List<ExtendedClassifier> initialClassifiers = new ArrayList<>();
-		for (String p : sourcePropertiesCoverageMap.keySet()) {
-			for (String q : targetPropertiesCoverageMap.keySet()) {
-				for (String m : getAtomicMeasures()) {
+		
+		
+	
+		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
+	
+		for (String p : sourcePropertiesWithAtomicMeasuresString) {
+			for (String q : targetPropertiesWithAtomicMeasuresString) {
+				for (String m : stringMeasures) {
 					ExtendedClassifier cp = findInitialClassifier(p, q, m);
 					// only add if classifier covers all entries
 					initialClassifiers.add(cp);
 				}
 			}
 		}
+		
+		
+		
+		
+		System.out.println(" *initialClassifiers* : " + initialClassifiers);
 		logger.debug("Done computing all initial classifiers.");
 		return initialClassifiers;
 	}
