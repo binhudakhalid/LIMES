@@ -96,6 +96,19 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	protected Set<String> wombatParameterNames = new HashSet<>();
 	protected ACache sourceSample = new HybridCache();
 	protected ACache targetSample = new HybridCache();
+    Set<String> set = new HashSet<>();
+
+    Set<String> sourcePropertiesWithAtomicTemporalMeasures = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresString = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresTopological = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresPointSet = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresVectorSpace = new HashSet<>();
+
+    Set<String> targetPropertiesWithAtomicTemporalMeasures =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresString =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresTopological =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresPointSet =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresVectorSpace =  new HashSet<>();
 
 	protected AWombat() {
 		super();
@@ -284,6 +297,9 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	 * @return initial classifiers
 	 */
 	protected final List<ExtendedClassifier> findInitialClassifiers() {
+		
+		setProperties();
+		
 		logger.debug("Geting all initial classifiers ...");
 		List<ExtendedClassifier> initialClassifiers = new ArrayList<>();
 		for (String p : sourcePropertiesCoverageMap.keySet()) {
@@ -519,7 +535,83 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	protected int getMaxRefinmentTreeSize() {
 		return Integer.parseInt(getParameter(PARAMETER_MAX_REFINEMENT_TREE_SIZE).toString());
 	}
+	
+	protected void setProperties(){
+		System.out.println(" * setProperties called * " );
+		
+		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
 
+		for (String s1 : sourceProperties) {
+			System.out.println("----------------------------");
+			String val = "";
+			try {
+				val = sourceCache.getNextInstance().getProperty(s1).first();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			
+			System.out.println("Property Name:" + s1);
+			System.out.println("Property value:" + val);
+			System.out.println("A1 : " + CheckType.check(val));
+			System.out.println("----------------------------");
+
+			if (CheckType.check(val) == "date") {
+				sourcePropertiesWithAtomicTemporalMeasures.add(s1);
+			} else if (CheckType.check(val) == "point") {
+				sourcePropertiesWithAtomicMeasuresPointSet.add(s1);
+			} else if (CheckType.check(val) == "int" || CheckType.check(val) == "double") {
+				sourcePropertiesWithAtomicMeasuresVectorSpace.add(s1);
+			} else {
+				sourcePropertiesWithAtomicMeasuresString.add(s1);
+			}
+		}
+		
+		System.out.println("sourcePropertiesWithAtomicTemporalMeasures :" + sourcePropertiesWithAtomicTemporalMeasures);
+		System.out.println("sourcePropertiesWithAtomicMeasuresPointSet :" + sourcePropertiesWithAtomicMeasuresPointSet);
+		System.out.println("sourcePropertiesWithAtomicMeasuresVectorSpace :" + sourcePropertiesWithAtomicMeasuresVectorSpace);
+		System.out.println("sourcePropertiesWithAtomicMeasuresString :" + sourcePropertiesWithAtomicMeasuresString);
+
+// Now for target
+		
+		Set<String> targetProperties = targetCache.getNextInstance().getAllProperties();
+
+		for (String t1 : targetProperties) {
+			System.out.println("----------------------------");
+			System.out.println("t1:" + t1);
+			String val = "";
+			try {
+				val = targetCache.getNextInstance().getProperty(t1).first();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			System.out.println("Property Name:" + t1);
+			System.out.println("Property value:" + val);
+			System.out.println("A1 : " + CheckType.check(val));
+			System.out.println("----------------------------");
+
+			if (CheckType.check(val) == "date") {
+				targetPropertiesWithAtomicTemporalMeasures.add(t1);
+			} else if (CheckType.check(val) == "point") {
+				targetPropertiesWithAtomicMeasuresPointSet.add(t1);
+			} else if (CheckType.check(val) == "int" || CheckType.check(val) == "double") {
+				targetPropertiesWithAtomicMeasuresVectorSpace.add(t1);
+			} else {
+				targetPropertiesWithAtomicMeasuresString.add(t1);
+			}
+		}
+		
+		System.out.println("targetPropertiesWithAtomicTemporalMeasures :" + targetPropertiesWithAtomicTemporalMeasures);
+		System.out.println("targetPropertiesWithAtomicMeasuresPointSet :" + targetPropertiesWithAtomicMeasuresPointSet);
+		System.out.println("targetPropertiesWithAtomicMeasuresVectorSpace :" + targetPropertiesWithAtomicMeasuresVectorSpace);
+		System.out.println("targetPropertiesWithAtomicMeasuresString :" + targetPropertiesWithAtomicMeasuresString);
+
+		
+
+		
+	}
+	
 	protected Set<String> getAtomicMeasures() {
 
 		System.out.println(" *k* sourcePropertiesCoverageMap : " + sourcePropertiesCoverageMap);
@@ -540,18 +632,9 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 		System.out.println(" *k* sourceCache.getNextInstance.getClass().getProperty  first : "
 				+ sourceCache.getNextInstance().getProperty("w3200:label").first());
 
-		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
-
-		for (String p1 : sourceProperties) {
-			System.out.println("----------------------------");
-			String val = sourceCache.getNextInstance().getProperty(p1).first();
-			System.out.println("Property Name:" + p1);
-			System.out.println("Property value:" + val);
-			System.out.println("A1 : " + CheckType.check(val));
-			
-			System.out.println("----------------------------");
-		}
-
+				
+		
+		
 		Set<String> atomicMeasures = new HashSet<>();
 		String measuresAsString = getParameter(PARAMETER_ATOMIC_MEASURES).toString().replace("[", "").replace("]", "");
 		for (String m : measuresAsString.split(",")) {
