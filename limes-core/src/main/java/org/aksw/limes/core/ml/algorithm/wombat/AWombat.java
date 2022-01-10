@@ -40,6 +40,7 @@ import org.aksw.limes.core.execution.rewriter.Rewriter;
 import org.aksw.limes.core.execution.rewriter.RewriterFactory;
 import org.aksw.limes.core.io.cache.ACache;
 import org.aksw.limes.core.io.cache.HybridCache;
+import org.aksw.limes.core.io.cache.Instance;
 import org.aksw.limes.core.io.ls.LinkSpecification;
 import org.aksw.limes.core.io.mapping.AMapping;
 import org.aksw.limes.core.io.mapping.MappingFactory;
@@ -569,15 +570,47 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	}
 	
 	protected void setProperties(){
+
+	//	System.out.println(" *k* targetCache.getNextInstance.getClass().getProperty : "
+	//			+ targetCache.getNextInstance().getProperty("xmfo:name1"));
+			
+				/*
+	
+			TreeSet<String> sur =	 targetCache.getNextInstance().getProperty("xmfo:name1");
+			
+			Optional<String> firstString = sur.stream().findFirst();
+			if(firstString.isPresent()){
+			    String first = firstString.get();
+			    System.out.println(" *k* firstString.get(); " + first );
+			}
+			
+			Optional<String> firstString1 = sur.stream().findFirst();
+			if(firstString1.isPresent()){
+			    String first1 = firstString1.get();
+			    System.out.println(" *k1* firstString1.get(); " + first1);
+			}
+			
+			
+			System.out.println(" *k* sur sur.size() : " + sur.size());
+			System.out.println(" *k* sur : " + sur);
+			System.out.println(" *k* sur sur.first() : " + sur.first());
+			
+*/
+			 
+		 	
+		System.out.println(" *k* targetCache : " + targetCache);
+
+
 		System.out.println(" * setProperties called * " );
 		
 		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
-
+		Instance instance = sourceCache.getNextInstance();
+		
 		for (String s1 : sourceProperties) {
 			System.out.println("----------------------------");
-			String val = "";
+			String val = " ";
 			try {
-				val = sourceCache.getNextInstance().getProperty(s1).first();
+				val = instance.getProperty(s1).first();
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
@@ -605,22 +638,30 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 		System.out.println("sourcePropertiesWithAtomicMeasuresString :" + sourcePropertiesWithAtomicMeasuresString);
 
 // Now for target
-		
-		Set<String> targetProperties = targetCache.getNextInstance().getAllProperties();
+		//Set<String> targetProperties00 = targetCache.getAllProperties();
+        //System.out.println("targetCache.getAllProperties(): " + targetProperties00 );
+		Set<String> targetProperties = targetCache.getAllProperties();
 
+		System.out.println( "*** targetCache **" + targetCache);
+	
+		Instance ins = targetCache.getNextInstance();
 		for (String t1 : targetProperties) {
 			System.out.println("----------------------------");
 			System.out.println("t1:" + t1);
-			String val = "";
+			String val = " ";
+		
+			//val = sourceCache.getNextInstance();
+
 			try {
-				val = targetCache.getNextInstance().getProperty(t1).first();
+			val =	ins.getProperty(t1).first();
+				System.out.println("+++++++++++ val : " + val );
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("----------killed------------------");
 			}
 			
-			System.out.println("Property Name:" + t1);
-			System.out.println("Property value:" + val);
-			System.out.println("A1 : " + CheckType.check(val));
+			System.out.println("Property Name: ." + t1);
+		//	System.out.println("Property value: ." + val);
+			//System.out.println("T1 : " + CheckType.check(val));
 			System.out.println("----------------------------");
 
 			if (CheckType.check(val) == "date") {
