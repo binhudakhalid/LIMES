@@ -305,12 +305,10 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 		
 	
 		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
-	//	Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_concurrent", "tmp_predecessor", "tmp_successor"));
 		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
-
-		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan", "geo_orthodromic"));
+		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan", "geo_orthodromic")); //remove geo_orthodromic 
 		Set<String> pointSetMeasures = new HashSet<>(Arrays.asList("geo_centroid_indexed_hausdorff", "geo_fast_hausdorff", "geo_max", "geo_mean"));
-	   
+
 		// String measure 
 		for (String p : sourcePropertiesWithAtomicMeasuresString) {
 			for (String q : targetPropertiesWithAtomicMeasuresString) {
@@ -336,6 +334,17 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 				for (String p : sourcePropertiesWithAtomicMeasuresVectorSpace) {
 					for (String q : targetPropertiesWithAtomicMeasuresVectorSpace) {
 						for (String m : vectorSpaceMeasures) {
+							ExtendedClassifier cp = findInitialClassifier(p, q, m);
+							// only add if classifier covers all entries
+							initialClassifiers.add(cp);
+						}
+					}
+				}
+
+				// vectorSpaceMeasures
+				for (String p : sourcePropertiesWithAtomicMeasuresPointSet) {
+					for (String q : targetPropertiesWithAtomicMeasuresPointSet) {
+						for (String m : pointSetMeasures) {
 							ExtendedClassifier cp = findInitialClassifier(p, q, m);
 							// only add if classifier covers all entries
 							initialClassifiers.add(cp);
