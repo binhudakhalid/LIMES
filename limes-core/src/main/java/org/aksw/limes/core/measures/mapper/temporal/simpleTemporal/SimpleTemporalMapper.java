@@ -98,7 +98,8 @@ public abstract class SimpleTemporalMapper extends AMapper implements ISimpleTem
             for (String value : time) {
                 try {
                     // 2015-04-22T11:29:51+02:00
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+                   // SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = df.parse(value);
                     long epoch = date.getTime();
                     if (!blocks.containsKey(String.valueOf(epoch))) {

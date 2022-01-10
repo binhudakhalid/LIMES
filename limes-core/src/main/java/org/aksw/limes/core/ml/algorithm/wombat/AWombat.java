@@ -305,7 +305,9 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 		
 	
 		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
-		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_concurrent", "tmp_predecessor", "tmp_successor"));
+	//	Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_concurrent", "tmp_predecessor", "tmp_successor"));
+		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
+
 		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan", "geo_orthodromic"));
 		Set<String> pointSetMeasures = new HashSet<>(Arrays.asList("geo_centroid_indexed_hausdorff", "geo_fast_hausdorff", "geo_max", "geo_mean"));
 	   
