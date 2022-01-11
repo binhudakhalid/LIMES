@@ -306,7 +306,7 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	
 		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
 		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
-		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan", "geo_orthodromic")); //remove geo_orthodromic 
+		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan")); //remove geo_orthodromic 
 		Set<String> pointSetMeasures = new HashSet<>(Arrays.asList("geo_centroid_indexed_hausdorff", "geo_fast_hausdorff", "geo_max", "geo_mean"));
 
 		// String measure 
@@ -636,7 +636,7 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 				sourcePropertiesWithAtomicTemporalMeasures.add(s1);
 			} else if (CheckType.check(val) == "point") {
 				sourcePropertiesWithAtomicMeasuresPointSet.add(s1);
-			} else if (CheckType.check(val) == "int" || CheckType.check(val) == "double") {
+			} else if (CheckType.check(val) == "number") {
 				sourcePropertiesWithAtomicMeasuresVectorSpace.add(s1);
 			} else {
 				sourcePropertiesWithAtomicMeasuresString.add(s1);
@@ -679,7 +679,7 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 				targetPropertiesWithAtomicTemporalMeasures.add(t1);
 			} else if (CheckType.check(val) == "point") {
 				targetPropertiesWithAtomicMeasuresPointSet.add(t1);
-			} else if (CheckType.check(val) == "int" || CheckType.check(val) == "double") {
+			} else if (CheckType.check(val) == "number") {
 				targetPropertiesWithAtomicMeasuresVectorSpace.add(t1);
 			} else {
 				targetPropertiesWithAtomicMeasuresString.add(t1);
