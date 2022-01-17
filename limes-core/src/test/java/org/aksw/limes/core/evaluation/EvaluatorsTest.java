@@ -43,14 +43,16 @@ public class EvaluatorsTest {
     static Logger logger = LoggerFactory.getLogger(EvaluatorsTest.class);
 
 
-    final private String[] datasetsList = {"RESTAURANTS"/*,"PERSON1",  "PERSON2", "PERSON1_CSV", "PERSON2_CSV", "OAEI2014BOOKS"*/};
-    final private String[] algorithmsListData = {"UNSUPERVISED:WOMBATSIMPLE","SUPERVISED_BATCH:WOMBATSIMPLE","SUPERVISED_ACTIVE:WOMBATSIMPLE","UNSUPERVISED:WOMBATCOMPLETE","SUPERVISED_BATCH:WOMBATCOMPLETE"};
+    final private String[] datasetsList = {"AG"};//"RESTAURANTS"/*,"PERSON1",  "PERSON2", "PERSON1_CSV", "PERSON2_CSV", "OAEI2014BOOKS"*/};
+    final private String[] algorithmsListData = {"UNSUPERVISED:WOMBATSIMPLEONE","UNSUPERVISED:WOMBATSIMPLE","SUPERVISED_BATCH:WOMBATSIMPLE"};
 
     private static final int folds=10;
     private static final boolean crossValidate=false;
 
     @Test
     public void test() {
+        System.out.println("Here we are");
+        testEvaluator();
         /*        if(crossValidate)
             testCrossValidate();
         else*/

@@ -89,6 +89,9 @@ public class DataSetChooser {
             case "AMAZONGOOGLEPRODUCTS":
                 param = getAmazonGoogleProducts();
                 break;
+            case "AG":
+                param = getAG();
+                break;
             case "DBPLINKEDMDB":
                 param = getDBPediaLinkedMDB();
                 break;
@@ -206,6 +209,9 @@ public class DataSetChooser {
                 break;
             case AMAZONGOOGLEPRODUCTS:
                 param = getAmazonGoogleProducts();
+                break;
+            case AG:
+                param = getAG();
                 break;
             case DBPLINKEDMDB:
                 param = getDBPediaLinkedMDB();
@@ -644,8 +650,42 @@ public class DataSetChooser {
         param.put(MapKey.DATASET_FOLDER, "src/main/resources/datasets/Amazon-GoogleProducts/");
         param.put(MapKey.CONFIG_FILE, "Amazon-GoogleProducts.xml");
         param.put(MapKey.REFERENCE_FILE, "Amzon_GoogleProducts_perfectMapping.csv");
-        param.put(MapKey.SOURCE_FILE, "Amazon.csv");
-        param.put(MapKey.TARGET_FILE, "GoogleProducts.csv");
+        param.put(MapKey.SOURCE_FILE, "Amazon1.csv");
+        param.put(MapKey.TARGET_FILE, "GoogleProducts.csv1");
+
+        param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
+        param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_Amazon-GoogleProducts.csv");
+        param.put(MapKey.NAME, "Amazon-GoogleProducts");
+        // data
+        AConfigurationReader cR = new XMLConfigurationReader(
+                (String) param.get(MapKey.BASE_FOLDER) + param.get(MapKey.CONFIG_FILE));
+        cR.read();
+
+        param.put(MapKey.CONFIG_READER, cR);
+        param.put(MapKey.PROPERTY_MAPPING, PropMapper.getPropertyMappingFromFile((String) param.get(MapKey.BASE_FOLDER),
+                (String) param.get(MapKey.CONFIG_FILE)));
+        param.put(MapKey.SOURCE_CACHE, HybridCache.getData(cR.getConfiguration().getSourceInfo()));
+        param.put(MapKey.TARGET_CACHE, HybridCache.getData(cR.getConfiguration().getTargetInfo()));
+        param.put(MapKey.REFERENCE_MAPPING,
+                OracleFactory
+                        .getOracle((String) /* param.get(MapKey.BASE_FOLDER)+ */param.get(MapKey.DATASET_FOLDER)
+                                + param.get(MapKey.REFERENCE_FILE), "csv", "simple")
+                        .getMapping());
+
+        param.put(MapKey.SOURCE_CLASS, "amazon:product");
+        param.put(MapKey.TARGET_CLASS, "google:product");
+        return param;
+    }
+
+    private static HashMap<MapKey, Object> getAG() {
+        HashMap<MapKey, Object> param = new HashMap<MapKey, Object>();
+        // folders & files
+        param.put(MapKey.BASE_FOLDER, "src/main/resources/datasets/");
+        param.put(MapKey.DATASET_FOLDER, "src/main/resources/datasets/Amazon-GoogleProducts/");
+        param.put(MapKey.CONFIG_FILE, "Amazon-GoogleProducts1.xml");
+        param.put(MapKey.REFERENCE_FILE, "Amzon_GoogleProducts_perfectMapping.csv");
+        param.put(MapKey.SOURCE_FILE, "Amazon1.csv");
+        param.put(MapKey.TARGET_FILE, "GoogleProducts1.csv");
 
         param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
         param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_Amazon-GoogleProducts.csv");
@@ -908,7 +948,7 @@ public class DataSetChooser {
     }
 
     public enum DataSets {
-        PERSON1, PERSON1_CSV, PERSON2, PERSON2_CSV, RESTAURANTS, OAEI2014BOOKS, RESTAURANTS_FIXED, DBLPACM, ABTBUY, DBLPSCHOLAR, AMAZONGOOGLEPRODUCTS, DBPLINKEDMDB, DRUGS, RESTAURANTS_CSV// ,TOWNS,
+        PERSON1, PERSON1_CSV, PERSON2, PERSON2_CSV, RESTAURANTS, OAEI2014BOOKS, RESTAURANTS_FIXED, DBLPACM, ABTBUY, DBLPSCHOLAR, AMAZONGOOGLEPRODUCTS, AG, DBPLINKEDMDB, DRUGS, RESTAURANTS_CSV// ,TOWNS,
         // VILLAGES,
         // MOVIES
     }

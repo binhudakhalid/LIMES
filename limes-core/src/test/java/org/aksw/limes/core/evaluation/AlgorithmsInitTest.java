@@ -105,6 +105,7 @@ public class AlgorithmsInitTest {
     }
 
     private List<LearningParameter> initializeLearningParameters(MLImplementationType mlType, String className) {
+       System.out.println(" * khalid bhai * ");
         List<LearningParameter> lParameters = null;
         if(mlType.equals(MLImplementationType.UNSUPERVISED)) {
             if(className.equals("WOMBATSIMPLE") || className.equals("WOMBATCOMPLETE"))
