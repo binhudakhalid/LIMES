@@ -53,7 +53,7 @@ import java.util.TreeSet;
  */
 public class WombatSimpleOne extends AWombat {
 
-    private static final Logger logger = LoggerFactory.getLogger(WombatSimple.class);
+    private static final Logger logger = LoggerFactory.getLogger(WombatSimpleOne.class);
 
     private static final String ALGORITHM_NAME = "Wombat Simple One";
 
@@ -78,7 +78,7 @@ public class WombatSimpleOne extends AWombat {
     Set<String> targetPropertiesWithAtomicMeasuresVectorSpace =  new HashSet<>();
 
     /**
-     * WombatSimple constructor.
+     * WombatSimpleOne constructor.
      */
     protected WombatSimpleOne() {
         super();
@@ -237,8 +237,9 @@ public class WombatSimpleOne extends AWombat {
 		
 		
 	
-		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
-		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
+		//Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
+		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "qgrams"));
+        Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
 		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan")); //remove geo_orthodromic 
 		Set<String> pointSetMeasures = new HashSet<>(Arrays.asList("geo_centroid_indexed_hausdorff", "geo_fast_hausdorff", "geo_max", "geo_mean"));
 
