@@ -97,19 +97,19 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	protected Set<String> wombatParameterNames = new HashSet<>();
 	protected ACache sourceSample = new HybridCache();
 	protected ACache targetSample = new HybridCache();
-    Set<String> set = new HashSet<>();
+	Set<String> set = new HashSet<>();
 
-    Set<String> sourcePropertiesWithAtomicTemporalMeasures = new HashSet<>();
-    Set<String> sourcePropertiesWithAtomicMeasuresString = new HashSet<>();
-    Set<String> sourcePropertiesWithAtomicMeasuresTopological = new HashSet<>();
-    Set<String> sourcePropertiesWithAtomicMeasuresPointSet = new HashSet<>();
-    Set<String> sourcePropertiesWithAtomicMeasuresVectorSpace = new HashSet<>();
+	Set<String> sourcePropertiesWithAtomicTemporalMeasures = new HashSet<>();
+	Set<String> sourcePropertiesWithAtomicMeasuresString = new HashSet<>();
+	Set<String> sourcePropertiesWithAtomicMeasuresTopological = new HashSet<>();
+	Set<String> sourcePropertiesWithAtomicMeasuresPointSet = new HashSet<>();
+	Set<String> sourcePropertiesWithAtomicMeasuresVectorSpace = new HashSet<>();
 
-    Set<String> targetPropertiesWithAtomicTemporalMeasures =  new HashSet<>();
-    Set<String> targetPropertiesWithAtomicMeasuresString =  new HashSet<>();
-    Set<String> targetPropertiesWithAtomicMeasuresTopological =  new HashSet<>();
-    Set<String> targetPropertiesWithAtomicMeasuresPointSet =  new HashSet<>();
-    Set<String> targetPropertiesWithAtomicMeasuresVectorSpace =  new HashSet<>();
+	Set<String> targetPropertiesWithAtomicTemporalMeasures = new HashSet<>();
+	Set<String> targetPropertiesWithAtomicMeasuresString = new HashSet<>();
+	Set<String> targetPropertiesWithAtomicMeasuresTopological = new HashSet<>();
+	Set<String> targetPropertiesWithAtomicMeasuresPointSet = new HashSet<>();
+	Set<String> targetPropertiesWithAtomicMeasuresVectorSpace = new HashSet<>();
 
 	protected AWombat() {
 		super();
@@ -297,64 +297,18 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	/**
 	 * @return initial classifiers
 	 */
-	protected final List<ExtendedClassifier> findInitialClassifiers() {
+	protected List<ExtendedClassifier> findInitialClassifiers() {
 		logger.debug("Geting all initial classifiers ...");
-		setProperties();
 		List<ExtendedClassifier> initialClassifiers = new ArrayList<>();
-		
-		
-	
-		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
-		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
-		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan")); //remove geo_orthodromic 
-		Set<String> pointSetMeasures = new HashSet<>(Arrays.asList("geo_centroid_indexed_hausdorff", "geo_fast_hausdorff", "geo_max", "geo_mean"));
-
-		// String measure 
-		for (String p : sourcePropertiesWithAtomicMeasuresString) {
-			for (String q : targetPropertiesWithAtomicMeasuresString) {
-				for (String m : stringMeasures) {
+		for (String p : sourcePropertiesCoverageMap.keySet()) {
+			for (String q : targetPropertiesCoverageMap.keySet()) {
+				for (String m : getAtomicMeasures()) {
 					ExtendedClassifier cp = findInitialClassifier(p, q, m);
 					// only add if classifier covers all entries
 					initialClassifiers.add(cp);
 				}
 			}
 		}
-		
-		// Temporal measure  
-				for (String p : sourcePropertiesWithAtomicTemporalMeasures) {
-					for (String q : targetPropertiesWithAtomicTemporalMeasures) {
-						for (String m : temporalMeasures) {
-							ExtendedClassifier cp = findInitialClassifier(p, q, m);
-							// only add if classifier covers all entries
-							initialClassifiers.add(cp);
-						}
-					}
-				}
-		// vectorSpaceMeasures
-				for (String p : sourcePropertiesWithAtomicMeasuresVectorSpace) {
-					for (String q : targetPropertiesWithAtomicMeasuresVectorSpace) {
-						for (String m : vectorSpaceMeasures) {
-							ExtendedClassifier cp = findInitialClassifier(p, q, m);
-							// only add if classifier covers all entries
-							initialClassifiers.add(cp);
-						}
-					}
-				}
-
-				// vectorSpaceMeasures
-				for (String p : sourcePropertiesWithAtomicMeasuresPointSet) {
-					for (String q : targetPropertiesWithAtomicMeasuresPointSet) {
-						for (String m : pointSetMeasures) {
-							ExtendedClassifier cp = findInitialClassifier(p, q, m);
-							// only add if classifier covers all entries
-							initialClassifiers.add(cp);
-						}
-					}
-				}
-		
-		
-		
-		System.out.println(" *initialClassifiers* : " + initialClassifiers);
 		logger.debug("Done computing all initial classifiers.");
 		return initialClassifiers;
 	}
@@ -376,7 +330,7 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	 * @param measure        Measure to be used
 	 * @return Best simple classifier
 	 */
-	private ExtendedClassifier findInitialClassifier(String sourceProperty, String targetProperty, String measure) {
+	protected ExtendedClassifier findInitialClassifier(String sourceProperty, String targetProperty, String measure) {
 		double maxOverlap = 0;
 		double theta = 1.0;
 		AMapping bestMapping = MappingFactory.createDefaultMapping();
@@ -579,146 +533,8 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 	protected int getMaxRefinmentTreeSize() {
 		return Integer.parseInt(getParameter(PARAMETER_MAX_REFINEMENT_TREE_SIZE).toString());
 	}
-	
-	protected void setProperties(){
 
-	//	System.out.println(" *k* targetCache.getNextInstance.getClass().getProperty : "
-	//			+ targetCache.getNextInstance().getProperty("xmfo:name1"));
-			
-				/*
-	
-			TreeSet<String> sur =	 targetCache.getNextInstance().getProperty("xmfo:name1");
-			
-			Optional<String> firstString = sur.stream().findFirst();
-			if(firstString.isPresent()){
-			    String first = firstString.get();
-			    System.out.println(" *k* firstString.get(); " + first );
-			}
-			
-			Optional<String> firstString1 = sur.stream().findFirst();
-			if(firstString1.isPresent()){
-			    String first1 = firstString1.get();
-			    System.out.println(" *k1* firstString1.get(); " + first1);
-			}
-			
-			
-			System.out.println(" *k* sur sur.size() : " + sur.size());
-			System.out.println(" *k* sur : " + sur);
-			System.out.println(" *k* sur sur.first() : " + sur.first());
-			
-*/
-			 
-		 	
-		System.out.println(" *k* targetCache : " + targetCache);
-
-
-		System.out.println(" * setProperties called * " );
-		
-		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
-		Instance instance = sourceCache.getNextInstance();
-		
-		for (String s1 : sourceProperties) {
-			System.out.println("----------------------------");
-			String val = " ";
-			try {
-				val = instance.getProperty(s1).first();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-			
-			
-			System.out.println("Property Name:" + s1);
-			System.out.println("Property value:" + val);
-			System.out.println("A1 : " + CheckType.check(val));
-			System.out.println("----------------------------");
-
-			if (CheckType.check(val) == "date") {
-				sourcePropertiesWithAtomicTemporalMeasures.add(s1);
-			} else if (CheckType.check(val) == "point") {
-				sourcePropertiesWithAtomicMeasuresPointSet.add(s1);
-			} else if (CheckType.check(val) == "number") {
-				sourcePropertiesWithAtomicMeasuresVectorSpace.add(s1);
-			} else {
-				sourcePropertiesWithAtomicMeasuresString.add(s1);
-			}
-		}
-		
-		System.out.println("sourcePropertiesWithAtomicTemporalMeasures :" + sourcePropertiesWithAtomicTemporalMeasures);
-		System.out.println("sourcePropertiesWithAtomicMeasuresPointSet :" + sourcePropertiesWithAtomicMeasuresPointSet);
-		System.out.println("sourcePropertiesWithAtomicMeasuresVectorSpace :" + sourcePropertiesWithAtomicMeasuresVectorSpace);
-		System.out.println("sourcePropertiesWithAtomicMeasuresString :" + sourcePropertiesWithAtomicMeasuresString);
-
-// Now for target
-		//Set<String> targetProperties00 = targetCache.getAllProperties();
-        //System.out.println("targetCache.getAllProperties(): " + targetProperties00 );
-		Set<String> targetProperties = targetCache.getAllProperties();
-
-		System.out.println( "*** targetCache **" + targetCache);
-	
-		Instance ins = targetCache.getNextInstance();
-		for (String t1 : targetProperties) {
-			System.out.println("----------------------------");
-			System.out.println("t1:" + t1);
-			String val = " ";
-		
-			//val = sourceCache.getNextInstance();
-
-			try {
-			val =	ins.getProperty(t1).first();
-				System.out.println("+++++++++++ val : " + val );
-			} catch (Exception e) {
-				System.out.println("----------killed------------------");
-			}
-			
-			System.out.println("Property Name: ." + t1);
-			System.out.println("Property value: ." + val);
-			System.out.println("T1 : " + CheckType.check(val));
-			System.out.println("----------------------------");
-
-			if (CheckType.check(val) == "date") {
-				targetPropertiesWithAtomicTemporalMeasures.add(t1);
-			} else if (CheckType.check(val) == "point") {
-				targetPropertiesWithAtomicMeasuresPointSet.add(t1);
-			} else if (CheckType.check(val) == "number") {
-				targetPropertiesWithAtomicMeasuresVectorSpace.add(t1);
-			} else {
-				targetPropertiesWithAtomicMeasuresString.add(t1);
-			}
-		}
-		
-		System.out.println("targetPropertiesWithAtomicTemporalMeasures :" + targetPropertiesWithAtomicTemporalMeasures);
-		System.out.println("targetPropertiesWithAtomicMeasuresPointSet :" + targetPropertiesWithAtomicMeasuresPointSet);
-		System.out.println("targetPropertiesWithAtomicMeasuresVectorSpace :" + targetPropertiesWithAtomicMeasuresVectorSpace);
-		System.out.println("targetPropertiesWithAtomicMeasuresString :" + targetPropertiesWithAtomicMeasuresString);
-
-		
-
-		
-	}
-	
 	protected Set<String> getAtomicMeasures() {
-
-		System.out.println(" *k* sourcePropertiesCoverageMap : " + sourcePropertiesCoverageMap);
-		System.out.println(" *k* sourcePropertiesCoverageMap.keySet : " + sourcePropertiesCoverageMap.keySet());
-		System.out.println(
-				" *k* sourcePropertiesCoverageMap.keySet toString : " + sourcePropertiesCoverageMap.toString());
-		System.out.println("---------------------------------------------------------------");
-
-		System.out.println(" *k* sourceCache : " + sourceCache);
-		// System.out.println(" *k* sourceCache.toString : " + sourceCache.toString() );
-		System.out.println(" *k* sourceCache.getNextInstance : " + sourceCache.getNextInstance());
-		System.out.println(" *k* sourceCache.getNextInstance.getUri() : " + sourceCache.getNextInstance().getUri());
-		System.out.println(" *k* sourceCache.getNextInstance.getAllProperties() : "
-				+ sourceCache.getNextInstance().getAllProperties());
-		System.out.println(" *k* sourceCache.getNextInstance.getClass() : " + sourceCache.getNextInstance().getClass());
-		System.out.println(" *k* sourceCache.getNextInstance.getClass().getProperty : "
-				+ sourceCache.getNextInstance().getProperty("w3200:label"));
-		System.out.println(" *k* sourceCache.getNextInstance.getClass().getProperty  first : "
-				+ sourceCache.getNextInstance().getProperty("w3200:label").first());
-
-				
-		
-		
 		Set<String> atomicMeasures = new HashSet<>();
 		String measuresAsString = getParameter(PARAMETER_ATOMIC_MEASURES).toString().replace("[", "").replace("]", "");
 		for (String m : measuresAsString.split(",")) {

@@ -22,6 +22,7 @@ import org.aksw.limes.core.datastrutures.Tree;
 import org.aksw.limes.core.evaluation.qualititativeMeasures.PseudoFMeasure;
 import org.aksw.limes.core.exceptions.UnsupportedMLImplementationException;
 import org.aksw.limes.core.io.cache.ACache;
+import org.aksw.limes.core.io.cache.Instance;
 import org.aksw.limes.core.io.ls.LinkSpecification;
 import org.aksw.limes.core.io.mapping.AMapping;
 import org.aksw.limes.core.io.mapping.MappingFactory;
@@ -29,14 +30,18 @@ import org.aksw.limes.core.io.mapping.MappingFactory.MappingType;
 import org.aksw.limes.core.measures.mapper.MappingOperations;
 import org.aksw.limes.core.ml.algorithm.classifier.ExtendedClassifier;
 import org.aksw.limes.core.ml.algorithm.wombat.AWombat;
+import org.aksw.limes.core.ml.algorithm.wombat.CheckType;
 import org.aksw.limes.core.ml.algorithm.wombat.LinkEntropy;
 import org.aksw.limes.core.ml.algorithm.wombat.RefinementNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -59,6 +64,18 @@ public class WombatSimpleOne extends AWombat {
     private List<ExtendedClassifier> classifiers = null;
 
     private Tree<RefinementNode> refinementTreeRoot = null;
+    
+    Set<String> sourcePropertiesWithAtomicTemporalMeasures = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresString = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresTopological = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresPointSet = new HashSet<>();
+    Set<String> sourcePropertiesWithAtomicMeasuresVectorSpace = new HashSet<>();
+
+    Set<String> targetPropertiesWithAtomicTemporalMeasures =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresString =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresTopological =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresPointSet =  new HashSet<>();
+    Set<String> targetPropertiesWithAtomicMeasuresVectorSpace =  new HashSet<>();
 
     /**
      * WombatSimple constructor.
@@ -212,6 +229,71 @@ public class WombatSimpleOne extends AWombat {
         }
     }
 
+    @Override
+    protected List<ExtendedClassifier> findInitialClassifiers() {
+		logger.debug("Geting all initial classifiers ...");
+		setProperties();
+		List<ExtendedClassifier> initialClassifiers = new ArrayList<>();
+		
+		
+	
+		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
+		Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
+		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan")); //remove geo_orthodromic 
+		Set<String> pointSetMeasures = new HashSet<>(Arrays.asList("geo_centroid_indexed_hausdorff", "geo_fast_hausdorff", "geo_max", "geo_mean"));
+
+		// String measure 
+		for (String p : sourcePropertiesWithAtomicMeasuresString) {
+			for (String q : targetPropertiesWithAtomicMeasuresString) {
+				for (String m : stringMeasures) {
+					ExtendedClassifier cp = findInitialClassifier(p, q, m);
+					// only add if classifier covers all entries
+					initialClassifiers.add(cp);
+				}
+			}
+		}
+		
+		// Temporal measure  
+				for (String p : sourcePropertiesWithAtomicTemporalMeasures) {
+					for (String q : targetPropertiesWithAtomicTemporalMeasures) {
+						for (String m : temporalMeasures) {
+							ExtendedClassifier cp = findInitialClassifier(p, q, m);
+							// only add if classifier covers all entries
+							initialClassifiers.add(cp);
+						}
+					}
+				}
+		// vectorSpaceMeasures
+				for (String p : sourcePropertiesWithAtomicMeasuresVectorSpace) {
+					for (String q : targetPropertiesWithAtomicMeasuresVectorSpace) {
+						for (String m : vectorSpaceMeasures) {
+							ExtendedClassifier cp = findInitialClassifier(p, q, m);
+							// only add if classifier covers all entries
+							initialClassifiers.add(cp);
+						}
+					}
+				}
+
+				// vectorSpaceMeasures
+				for (String p : sourcePropertiesWithAtomicMeasuresPointSet) {
+					for (String q : targetPropertiesWithAtomicMeasuresPointSet) {
+						for (String m : pointSetMeasures) {
+							ExtendedClassifier cp = findInitialClassifier(p, q, m);
+							// only add if classifier covers all entries
+							initialClassifiers.add(cp);
+						}
+					}
+				}
+		
+		
+		
+		System.out.println(" *initialClassifiers* : " + initialClassifiers);
+		logger.debug("Done computing all initial classifiers.");
+		return initialClassifiers;
+	}
+
+    
+    
 
     /**
      * @return RefinementNode containing the best over all solution
@@ -327,6 +409,122 @@ public class WombatSimpleOne extends AWombat {
             refinementTreeRoot.print();
         }
     }
+    
+    protected void setProperties(){
+
+    	//	System.out.println(" *k* targetCache.getNextInstance.getClass().getProperty : "
+    	//			+ targetCache.getNextInstance().getProperty("xmfo:name1"));
+    			
+    				/*
+    	
+    			TreeSet<String> sur =	 targetCache.getNextInstance().getProperty("xmfo:name1");
+    			
+    			Optional<String> firstString = sur.stream().findFirst();
+    			if(firstString.isPresent()){
+    			    String first = firstString.get();
+    			    System.out.println(" *k* firstString.get(); " + first );
+    			}
+    			
+    			Optional<String> firstString1 = sur.stream().findFirst();
+    			if(firstString1.isPresent()){
+    			    String first1 = firstString1.get();
+    			    System.out.println(" *k1* firstString1.get(); " + first1);
+    			}
+    			
+    			
+    			System.out.println(" *k* sur sur.size() : " + sur.size());
+    			System.out.println(" *k* sur : " + sur);
+    			System.out.println(" *k* sur sur.first() : " + sur.first());
+    			
+    */
+    			 
+    		 	
+    		System.out.println(" *k* targetCache : " + targetCache);
+
+
+    		System.out.println(" * setProperties called * " );
+    		
+    		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
+    		Instance instance = sourceCache.getNextInstance();
+    		
+    		for (String s1 : sourceProperties) {
+    			System.out.println("----------------------------");
+    			String val = " ";
+    			try {
+    				val = instance.getProperty(s1).first();
+    			} catch (Exception e) {
+    				// TODO: handle exception
+    			}
+    			
+    			
+    			System.out.println("Property Name:" + s1);
+    			System.out.println("Property value:" + val);
+    			System.out.println("A1 : " + CheckType.check(val));
+    			System.out.println("----------------------------");
+
+    			if (CheckType.check(val) == "date") {
+    				sourcePropertiesWithAtomicTemporalMeasures.add(s1);
+    			} else if (CheckType.check(val) == "point") {
+    				sourcePropertiesWithAtomicMeasuresPointSet.add(s1);
+    			} else if (CheckType.check(val) == "number") {
+    				sourcePropertiesWithAtomicMeasuresVectorSpace.add(s1);
+    			} else {
+    				sourcePropertiesWithAtomicMeasuresString.add(s1);
+    			}
+    		}
+    		
+    		System.out.println("sourcePropertiesWithAtomicTemporalMeasures :" + sourcePropertiesWithAtomicTemporalMeasures);
+    		System.out.println("sourcePropertiesWithAtomicMeasuresPointSet :" + sourcePropertiesWithAtomicMeasuresPointSet);
+    		System.out.println("sourcePropertiesWithAtomicMeasuresVectorSpace :" + sourcePropertiesWithAtomicMeasuresVectorSpace);
+    		System.out.println("sourcePropertiesWithAtomicMeasuresString :" + sourcePropertiesWithAtomicMeasuresString);
+
+    // Now for target
+    		//Set<String> targetProperties00 = targetCache.getAllProperties();
+            //System.out.println("targetCache.getAllProperties(): " + targetProperties00 );
+    		Set<String> targetProperties = targetCache.getAllProperties();
+
+    		System.out.println( "*** targetCache **" + targetCache);
+    	
+    		Instance ins = targetCache.getNextInstance();
+    		for (String t1 : targetProperties) {
+    			System.out.println("----------------------------");
+    			System.out.println("t1:" + t1);
+    			String val = " ";
+    		
+    			//val = sourceCache.getNextInstance();
+
+    			try {
+    			val =	ins.getProperty(t1).first();
+    				System.out.println("+++++++++++ val : " + val );
+    			} catch (Exception e) {
+    				System.out.println("----------killed------------------");
+    			}
+    			
+    			System.out.println("Property Name: ." + t1);
+    			System.out.println("Property value: ." + val);
+    			System.out.println("T1 : " + CheckType.check(val));
+    			System.out.println("----------------------------");
+
+    			if (CheckType.check(val) == "date") {
+    				targetPropertiesWithAtomicTemporalMeasures.add(t1);
+    			} else if (CheckType.check(val) == "point") {
+    				targetPropertiesWithAtomicMeasuresPointSet.add(t1);
+    			} else if (CheckType.check(val) == "number") {
+    				targetPropertiesWithAtomicMeasuresVectorSpace.add(t1);
+    			} else {
+    				targetPropertiesWithAtomicMeasuresString.add(t1);
+    			}
+    		}
+    		
+    		System.out.println("targetPropertiesWithAtomicTemporalMeasures :" + targetPropertiesWithAtomicTemporalMeasures);
+    		System.out.println("targetPropertiesWithAtomicMeasuresPointSet :" + targetPropertiesWithAtomicMeasuresPointSet);
+    		System.out.println("targetPropertiesWithAtomicMeasuresVectorSpace :" + targetPropertiesWithAtomicMeasuresVectorSpace);
+    		System.out.println("targetPropertiesWithAtomicMeasuresString :" + targetPropertiesWithAtomicMeasuresString);
+
+    		
+
+    		
+    	}
 
 
 }
