@@ -671,8 +671,8 @@ public abstract class AWombat extends ACoreMLAlgorithm {
 			}
 			
 			System.out.println("Property Name: ." + t1);
-		//	System.out.println("Property value: ." + val);
-			//System.out.println("T1 : " + CheckType.check(val));
+			System.out.println("Property value: ." + val);
+			System.out.println("T1 : " + CheckType.check(val));
 			System.out.println("----------------------------");
 
 			if (CheckType.check(val) == "date") {
