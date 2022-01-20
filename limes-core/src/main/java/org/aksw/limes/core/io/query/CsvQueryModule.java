@@ -71,7 +71,7 @@ public class CsvQueryModule implements IQueryModule {
             String s = reader.readLine();
             String split[];
             //first read name of properties. URI = first column
-            if (s != null) {
+            if (s != null && s!= "") {
                 ArrayList<String> properties = new ArrayList<>();
                 //split first line
                 split = s.split(SEP);
@@ -79,7 +79,7 @@ public class CsvQueryModule implements IQueryModule {
 
                 s = reader.readLine();
                 String id, value;
-                while (s != null) {
+                while (s != null  && s!= "") {
                     //split = s.split(SEP);
 
                     split = DataCleaner.separate(s, SEP, properties.size());
