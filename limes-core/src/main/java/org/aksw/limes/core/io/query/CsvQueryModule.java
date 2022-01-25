@@ -80,6 +80,7 @@ public class CsvQueryModule implements IQueryModule {
                 s = reader.readLine();
                 String id, value;
                 while (s != null  && s!= "") {
+                    if (!s.contains(",,") && s.charAt(s.length() - 1) != ',') {
                     //split = s.split(SEP);
 
                     split = DataCleaner.separate(s, SEP, properties.size());
@@ -89,6 +90,7 @@ public class CsvQueryModule implements IQueryModule {
                         value = split[properties.indexOf(propertyLabel)];
                         c.addTriple(id, propertyLabel, value);
                     }
+                 }
                     s = reader.readLine();
                 }
             } else {

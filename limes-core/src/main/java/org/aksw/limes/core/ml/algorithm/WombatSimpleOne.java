@@ -484,7 +484,7 @@ public class WombatSimpleOne extends AWombat {
             //System.out.println("targetCache.getAllProperties(): " + targetProperties00 );
     		Set<String> targetProperties = targetCache.getAllProperties();
 
-    		System.out.println( "*** targetCache **" + targetCache);
+    		//System.out.println( "*** targetCache **" + targetCache);
     	
     		Instance ins = targetCache.getNextInstance();
     		for (String t1 : targetProperties) {
