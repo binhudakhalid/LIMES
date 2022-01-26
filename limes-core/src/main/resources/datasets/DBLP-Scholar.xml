@@ -12,22 +12,24 @@
 		<VAR>?x</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>title AS lowercase</PROPERTY>		
-		<PROPERTY>authors AS lowercase</PROPERTY>
-		<PROPERTY>venue AS lowercase</PROPERTY>
-		<PROPERTY>year AS number</PROPERTY>
+	    <PROPERTY>id</PROPERTY>
+	    <PROPERTY>title</PROPERTY>
+	    <PROPERTY>authors</PROPERTY>
+	    <PROPERTY>venue</PROPERTY>
+	    <PROPERTY>year</PROPERTY>
 		<TYPE>CSV</TYPE>
 	</SOURCE>
 	<TARGET>
 		<ID>scholar</ID>
-		<ENDPOINT>datasets/DBLP-Scholar/Scholar.csv</ENDPOINT>
+		<ENDPOINT>datasets/DBLP-Scholar/Scholarp.csv</ENDPOINT>
 		<VAR>?y</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>title AS lowercase</PROPERTY>
-		<PROPERTY>authors AS lowercase</PROPERTY>
-		<PROPERTY>venue AS lowercase</PROPERTY>
-		<PROPERTY>year AS number</PROPERTY>
+	    <PROPERTY>id</PROPERTY>
+	    <PROPERTY>title</PROPERTY>
+	    <PROPERTY>authors</PROPERTY>
+	    <PROPERTY>venue</PROPERTY>
+	    <PROPERTY>year</PROPERTY>  
 		<TYPE>CSV</TYPE>
 	</TARGET>
 	

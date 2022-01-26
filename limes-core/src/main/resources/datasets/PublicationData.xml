@@ -8,26 +8,29 @@
 	</PREFIX>
 	<SOURCE>
 		<ID>dblp2</ID>
-		<ENDPOINT>datasets/DBLP-ACM/DBLP2.csv</ENDPOINT>
+		<ENDPOINT>datasets/DBLP-ACM/DBLP2pp.csv</ENDPOINT>
 		<VAR>?x</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>title AS lowercase</PROPERTY>
-		<PROPERTY>authors AS lowercase</PROPERTY>
-		<PROPERTY>venue AS lowercase</PROPERTY>
+		<PROPERTY>id</PROPERTY>
+		<PROPERTY>title</PROPERTY>
+		<PROPERTY>authors</PROPERTY>
+		<PROPERTY>venue</PROPERTY>
+		<PROPERTY>year</PROPERTY>
 		<!--<PROPERTY>year AS number</PROPERTY> --> 
 		<TYPE>CSV</TYPE>
 	</SOURCE>
 	<TARGET>
 		<ID>acm</ID>
-		<ENDPOINT>datasets/DBLP-ACM/ACM.csv</ENDPOINT>
+		<ENDPOINT>datasets/DBLP-ACM/ACMpp.csv</ENDPOINT>
 		<VAR>?y</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>title AS lowercase</PROPERTY>
-		<PROPERTY>authors AS lowercase</PROPERTY>
-		<PROPERTY>venue AS lowercase</PROPERTY>
-		<!--<PROPERTY>year AS number</PROPERTY>-->
+		<PROPERTY>id</PROPERTY>
+        <PROPERTY>title</PROPERTY>
+        <PROPERTY>authors</PROPERTY>
+        <PROPERTY>venue</PROPERTY>
+        <PROPERTY>year</PROPERTY>  
 		<TYPE>CSV</TYPE>
 	</TARGET>
 	

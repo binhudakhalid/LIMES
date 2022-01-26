@@ -8,24 +8,27 @@
 	</PREFIX>
 	<SOURCE>
 		<ID>abt</ID>
-		<ENDPOINT>datasets/Abt-Buy/Abt.csv</ENDPOINT>
+		<ENDPOINT>datasets/Abt-Buy/Abtp.csv</ENDPOINT>
 		<VAR>?x</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>name AS lowercase</PROPERTY>
-		<PROPERTY>description AS lowercase</PROPERTY>
-		<PROPERTY>price AS number</PROPERTY>
+		<PROPERTY>id</PROPERTY>
+		<PROPERTY>name</PROPERTY>
+		<PROPERTY>description</PROPERTY>
+		<PROPERTY>price</PROPERTY>
 		<TYPE>CSV</TYPE>
 	</SOURCE>
 	<TARGET>
 		<ID>buy</ID>
-		<ENDPOINT>datasets/Abt-Buy/Buy.csv</ENDPOINT>
+		<ENDPOINT>datasets/Abt-Buy/Buyp.csv</ENDPOINT>
 		<VAR>?y</VAR>
 		<PAGESIZE>-1</PAGESIZE>
 		<RESTRICTION></RESTRICTION>
-		<PROPERTY>name AS lowercase</PROPERTY>
-		<PROPERTY>description AS lowercase</PROPERTY>
-		<PROPERTY>price AS number</PROPERTY>
+		<PROPERTY>id</PROPERTY>
+		<PROPERTY>name</PROPERTY>
+		<PROPERTY>description</PROPERTY>
+		<PROPERTY>manufacturer</PROPERTY>
+		<PROPERTY>price</PROPERTY>
 		<TYPE>CSV</TYPE>
 	</TARGET>
 	

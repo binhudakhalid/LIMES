@@ -1,0 +1,14 @@
+2022-01-25T14:57:23,902 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-1986090716.ser
+2022-01-25T14:57:23,909 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 142 - No cached data found for sourceId
+2022-01-25T14:57:23,911 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.QueryModuleFactory 35 - Generating <CSV> reader
+2022-01-25T14:57:24,070 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.CsvQueryModule 100 - Retrieved 1248 statements
+2022-01-25T14:57:24,077 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 326 - Serializing 1248 objects to F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-1986090716.ser
+2022-01-25T14:57:24,631 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-934208812.ser
+2022-01-25T14:57:24,631 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 142 - No cached data found for targetId
+2022-01-25T14:57:24,634 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.QueryModuleFactory 35 - Generating <CSV> reader
+2022-01-25T14:57:24,678 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.CsvQueryModule 100 - Retrieved 231 statements
+2022-01-25T14:57:24,678 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 326 - Serializing 231 objects to F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-934208812.ser
+2022-01-25T14:57:49,402 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.controller.MLPipeline 110 - Learned: OR(qgrams(x.manufacturer,y.manufacturer)|1.0,qgrams(x.title,y.name)|0.43046721000000016) with threshold: 0.0
+2022-01-25T14:57:49,556 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.controller.Controller 232 - Mapping task finished in 24751 ms
+2022-01-25T14:57:49,558 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.controller.Controller 236 - Mapping size: 1695 (accepted) + 22 (need verification) = 1717 (total)
+2022-01-25T14:57:49,560 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.serializer.SerializerFactory 32 - Getting serializer with name NT

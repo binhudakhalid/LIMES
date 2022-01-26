@@ -1,0 +1,12 @@
+2022-01-25T15:36:33,331 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-731793821.ser
+2022-01-25T15:36:33,340 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 128 - Found cached data. Loading data from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-731793821.ser
+2022-01-25T15:36:33,620 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 134 - Cached data loaded successfully from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-731793821.ser
+2022-01-25T15:36:33,620 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 135 - Size = 418
+2022-01-25T15:36:33,628 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-326360763.ser
+2022-01-25T15:36:33,629 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 128 - Found cached data. Loading data from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-326360763.ser
+2022-01-25T15:36:33,794 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 134 - Cached data loaded successfully from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-326360763.ser
+2022-01-25T15:36:33,802 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 135 - Size = 382
+2022-01-25T15:36:40,783 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.controller.MLPipeline 110 - Learned: OR(manhattan(x.price,y.price)|0.81,qgrams(x.name,y.description)|0.43046721000000016) with threshold: 0.0
+2022-01-25T15:36:40,961 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.controller.Controller 232 - Mapping task finished in 7144 ms
+2022-01-25T15:36:40,964 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.controller.Controller 236 - Mapping size: 479 (accepted) + 20 (need verification) = 499 (total)
+2022-01-25T15:36:40,965 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.serializer.SerializerFactory 32 - Getting serializer with name NT

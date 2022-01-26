@@ -1,0 +1,10 @@
+2022-01-25T16:37:53,845 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\2002368219.ser
+2022-01-25T16:37:53,848 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 128 - Found cached data. Loading data from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\2002368219.ser
+2022-01-25T16:37:53,865 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 142 - No cached data found for sourceId
+2022-01-25T16:37:53,866 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.QueryModuleFactory 35 - Generating <CSV> reader
+2022-01-25T16:37:53,881 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.CsvQueryModule 100 - Retrieved 0 statements
+2022-01-25T16:37:53,881 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 326 - Serializing 0 objects to F:\FinalProject\Benchmarking\LIMES\limes-core\cache\2002368219.ser
+2022-01-25T16:37:53,884 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-263243862.ser
+2022-01-25T16:37:53,885 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 128 - Found cached data. Loading data from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-263243862.ser
+2022-01-25T16:37:54,369 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 134 - Cached data loaded successfully from file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-263243862.ser
+2022-01-25T16:37:54,370 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 135 - Size = 2616

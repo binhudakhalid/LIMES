@@ -92,6 +92,9 @@ public class DataSetChooser {
             case "AG":
                 param = getAG();
                 break;
+            case "AmazonGoogleProcessed":
+                param = getAmazonGoogleProcessed();
+                break;
             case "DBPLINKEDMDB":
                 param = getDBPediaLinkedMDB();
                 break;
@@ -212,6 +215,9 @@ public class DataSetChooser {
                 break;
             case AG:
                 param = getAG();
+                break;
+            case AmazonGoogleProcessed:
+                param = getAmazonGoogleProcessed();
                 break;
             case DBPLINKEDMDB:
                 param = getDBPediaLinkedMDB();
@@ -389,8 +395,8 @@ public class DataSetChooser {
         param.put(MapKey.DATASET_FOLDER, "src/main/resources/datasets/Persons2/");
         param.put(MapKey.CONFIG_FILE, "persons2.xml");
         param.put(MapKey.REFERENCE_FILE, "dataset21_dataset22_goldstandard_person.xml");
-        param.put(MapKey.SOURCE_FILE, "person21.nt");
-        param.put(MapKey.TARGET_FILE, "person22.nt");
+        param.put(MapKey.SOURCE_FILE, "person21p.csv");
+        param.put(MapKey.TARGET_FILE, "person22p.csv");
         String type = "-Person";
         param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
         param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_Persons2.csv");
@@ -550,8 +556,8 @@ public class DataSetChooser {
         param.put(MapKey.DATASET_FOLDER, "src/main/resources/datasets/DBLP-ACM/" /* "Datasets/DBLP-ACM/" */);
         param.put(MapKey.CONFIG_FILE, "PublicationData.xml");
         param.put(MapKey.REFERENCE_FILE, "DBLP-ACM_perfectMapping.csv");
-        param.put(MapKey.SOURCE_FILE, "ACM.csv");
-        param.put(MapKey.TARGET_FILE, "DBLP2.csv");
+        param.put(MapKey.SOURCE_FILE, "ACMpp.csv");
+        param.put(MapKey.TARGET_FILE, "DBLP2pp.csv");
 
         param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
         param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_DBLP-ACM.csv");
@@ -582,8 +588,8 @@ public class DataSetChooser {
         param.put(MapKey.DATASET_FOLDER, "src/main/resources/datasets/Abt-Buy/" /* "Datasets/Abt-Buy/" */);
         param.put(MapKey.CONFIG_FILE, "Abt-Buy.xml");
         param.put(MapKey.REFERENCE_FILE, "abt_buy_perfectMapping.csv");
-        param.put(MapKey.SOURCE_FILE, "Abt.csv");
-        param.put(MapKey.TARGET_FILE, "Buy.csv");
+        param.put(MapKey.SOURCE_FILE, "Abtp.csv");
+        param.put(MapKey.TARGET_FILE, "Buyp.csv");
 
         param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
         param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_Abt-Buy.csv");
@@ -616,7 +622,7 @@ public class DataSetChooser {
         param.put(MapKey.CONFIG_FILE, "DBLP-Scholar.xml");
         param.put(MapKey.REFERENCE_FILE, "DBLP-Scholar_perfectMapping.csv");
         param.put(MapKey.SOURCE_FILE, "DBLP1.csv");
-        param.put(MapKey.TARGET_FILE, "Scholar.csv");
+        param.put(MapKey.TARGET_FILE, "Scholarp.csv");
 
         param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
         param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_DBLP-Scholar.csv");
@@ -686,6 +692,40 @@ public class DataSetChooser {
         param.put(MapKey.REFERENCE_FILE, "Amzon_GoogleProducts_perfectMapping.csv");
         param.put(MapKey.SOURCE_FILE, "Amazon1.csv");
         param.put(MapKey.TARGET_FILE, "GoogleProducts1.csv");
+
+        param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
+        param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_Amazon-GoogleProducts.csv");
+        param.put(MapKey.NAME, "Amazon-GoogleProducts");
+        // data
+        AConfigurationReader cR = new XMLConfigurationReader(
+                (String) param.get(MapKey.BASE_FOLDER) + param.get(MapKey.CONFIG_FILE));
+        cR.read();
+
+        param.put(MapKey.CONFIG_READER, cR);
+        param.put(MapKey.PROPERTY_MAPPING, PropMapper.getPropertyMappingFromFile((String) param.get(MapKey.BASE_FOLDER),
+                (String) param.get(MapKey.CONFIG_FILE)));
+        param.put(MapKey.SOURCE_CACHE, HybridCache.getData(cR.getConfiguration().getSourceInfo()));
+        param.put(MapKey.TARGET_CACHE, HybridCache.getData(cR.getConfiguration().getTargetInfo()));
+        param.put(MapKey.REFERENCE_MAPPING,
+                OracleFactory
+                        .getOracle((String) /* param.get(MapKey.BASE_FOLDER)+ */param.get(MapKey.DATASET_FOLDER)
+                                + param.get(MapKey.REFERENCE_FILE), "csv", "simple")
+                        .getMapping());
+
+        param.put(MapKey.SOURCE_CLASS, "amazon:product");
+        param.put(MapKey.TARGET_CLASS, "google:product");
+        return param;
+    }
+
+    private static HashMap<MapKey, Object> getAmazonGoogleProcessed() {
+        HashMap<MapKey, Object> param = new HashMap<MapKey, Object>();
+        // folders & files
+        param.put(MapKey.BASE_FOLDER, "src/main/resources/datasetsOne/");
+        param.put(MapKey.DATASET_FOLDER, "src/main/resources/datasetsOne/Amazon-GoogleProducts/");
+        param.put(MapKey.CONFIG_FILE, "example_Amazon-GoogleProducts.xml");
+        param.put(MapKey.REFERENCE_FILE, "Amzon_GoogleProducts_perfectMapping.csv");
+        param.put(MapKey.SOURCE_FILE, "Amazonp.csv");
+        param.put(MapKey.TARGET_FILE, "GoogleProductsp.csv");
 
         param.put(MapKey.EVALUATION_RESULTS_FOLDER, "resources/results/");
         param.put(MapKey.EVALUATION_FILENAME, "Pseudo_eval_Amazon-GoogleProducts.csv");
@@ -948,7 +988,7 @@ public class DataSetChooser {
     }
 
     public enum DataSets {
-        PERSON1, PERSON1_CSV, PERSON2, PERSON2_CSV, RESTAURANTS, OAEI2014BOOKS, RESTAURANTS_FIXED, DBLPACM, ABTBUY, DBLPSCHOLAR, AMAZONGOOGLEPRODUCTS, AG, DBPLINKEDMDB, DRUGS, RESTAURANTS_CSV// ,TOWNS,
+        AmazonGoogleProcessed, PERSON1, PERSON1_CSV, PERSON2, PERSON2_CSV, RESTAURANTS, OAEI2014BOOKS, RESTAURANTS_FIXED, DBLPACM, ABTBUY, DBLPSCHOLAR, AMAZONGOOGLEPRODUCTS, AG, DBPLINKEDMDB, DRUGS, RESTAURANTS_CSV// ,TOWNS,
         // VILLAGES,
         // MOVIES
     }

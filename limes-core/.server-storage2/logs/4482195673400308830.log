@@ -1,0 +1,10 @@
+2022-01-25T16:35:04,378 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\2002368219.ser
+2022-01-25T16:35:04,381 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 142 - No cached data found for sourceId
+2022-01-25T16:35:04,382 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.QueryModuleFactory 35 - Generating <CSV> reader
+2022-01-25T16:35:04,400 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.CsvQueryModule 100 - Retrieved 0 statements
+2022-01-25T16:35:04,400 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 326 - Serializing 0 objects to F:\FinalProject\Benchmarking\LIMES\limes-core\cache\2002368219.ser
+2022-01-25T16:35:04,460 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 125 - Checking for file F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-263243862.ser
+2022-01-25T16:35:04,461 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 142 - No cached data found for targetId
+2022-01-25T16:35:04,461 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.QueryModuleFactory 35 - Generating <CSV> reader
+2022-01-25T16:35:04,497 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.query.CsvQueryModule 100 - Retrieved 2616 statements
+2022-01-25T16:35:04,498 [ForkJoinPool.commonPool-worker-3] INFO org.aksw.limes.core.io.cache.HybridCache 326 - Serializing 2616 objects to F:\FinalProject\Benchmarking\LIMES\limes-core\cache\-263243862.ser
