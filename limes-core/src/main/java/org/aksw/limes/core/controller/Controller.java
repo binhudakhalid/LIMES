@@ -211,6 +211,7 @@ public class Controller {
         // 5. Machine Learning or Planning
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
+        System.out.println(" hehehehehhehe ");
         boolean isAlgorithm = !config.getMlAlgorithmName().equals("");
         if (isAlgorithm) {
             try {
