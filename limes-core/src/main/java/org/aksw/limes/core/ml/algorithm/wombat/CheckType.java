@@ -70,6 +70,7 @@ public class CheckType {
 		String lastCharater = i1.substring(i1.length() - 1);
 
 		// Remove first and last string
+		if(i1.length()>1)
 		i1 = i1.substring(1, i1.length() - 1);
 
 		// Break the string with comma

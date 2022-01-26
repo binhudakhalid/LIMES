@@ -440,7 +440,7 @@ public class WombatSimpleOne extends AWombat {
     */
     			 
     		 	
-    		System.out.println(" *k* targetCache : " + targetCache);
+    		//System.out.println(" *k* targetCache : " + targetCache);
 
 
     		System.out.println(" * setProperties called * " );
