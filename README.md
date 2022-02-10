@@ -32,10 +32,15 @@ Go to datasets folder, In this folder, you can find limes configuration file "Ty
 
 After running these step you will get the result.
 
+![Alt text](/screenshot/result.png?raw=true "Title")
+
+
 ## Benchmarking
 Configuration files and benchmarking dataset can found in 
 
     limes-core/src/main/resources/datasetsOne
+    
+![Alt text](/screenshot/benchmark.png?raw=true "Title")
 
 ## Running LIMES
 
