@@ -86,8 +86,8 @@ public class AlgorithmsInitTest {
                         mlAlgorithm =  MLAlgorithmFactory.createMLAlgorithm(WombatSimple.class,algType).asUnsupervised(); //create an wombat simple learning algorithm
                     else if(algorithmTitles[1].equals("WOMBATCOMPLETE"))
                         mlAlgorithm =  MLAlgorithmFactory.createMLAlgorithm(WombatComplete.class,algType).asUnsupervised(); //create an wombat complete learning algorithm
-                    else if(algorithmTitles[1].equals("WOMBATSIMPLEONE"))
-                        mlAlgorithm =  MLAlgorithmFactory.createMLAlgorithm(WombatSimpleOne.class,algType).asUnsupervised(); //create an wombat simple one learning algorithm
+                    else if(algorithmTitles[1].equals("TYPEDRIVENWOMBATSIMPLE"))
+                        mlAlgorithm =  MLAlgorithmFactory.createMLAlgorithm(TypeDrivenWombatSimple.class,algType).asUnsupervised(); //create an type driven wombat simple learning algorithm
 
                     mlParameter = initializeLearningParameters(MLImplementationType.UNSUPERVISED,algorithmTitles[1]);
 

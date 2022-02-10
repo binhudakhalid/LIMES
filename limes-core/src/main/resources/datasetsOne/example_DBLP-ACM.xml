@@ -69,7 +69,7 @@
 </TARGET>
 
 <MLALGORITHM>
-  <NAME>wombat simple one</NAME>
+  <NAME>type driven wombat simple</NAME>
   <TYPE>unsupervised</TYPE>
   <PARAMETER> 
       <NAME>max execution time in minutes</NAME>

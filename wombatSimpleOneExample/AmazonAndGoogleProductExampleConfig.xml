@@ -41,7 +41,7 @@
 
 <SOURCE>
   <ID>sourceId</ID>
- <ENDPOINT>F:\Newfolder\dec\LIMES\t\data\Amazon.csv</ENDPOINT>
+ <ENDPOINT>data/Amazon.csv</ENDPOINT>
   <VAR>?s</VAR>
   <PAGESIZE>-1</PAGESIZE>
   <RESTRICTION></RESTRICTION>
@@ -55,7 +55,7 @@
 
 <TARGET>
   <ID>targetId</ID>  
-  <ENDPOINT>F:\Newfolder\dec\LIMES\t\data\GoogleProducts.csv</ENDPOINT>
+  <ENDPOINT>data/GoogleProducts.csv</ENDPOINT>
   <VAR>?t</VAR>
   <PAGESIZE>-1</PAGESIZE>
   <RESTRICTION></RESTRICTION>  
@@ -67,7 +67,7 @@
 </TARGET>
 
 <MLALGORITHM>
-  <NAME>wombat simple one</NAME>
+  <NAME>type driven wombat simple</NAME>
   <TYPE>unsupervised</TYPE>
   <PARAMETER> 
       <NAME>max execution time in minutes</NAME>

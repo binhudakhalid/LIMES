@@ -44,7 +44,7 @@ public class EvaluatorsTest {
 
 
     final private String[] datasetsList = {"AG"};//"RESTAURANTS"/*,"PERSON1",  "PERSON2", "PERSON1_CSV", "PERSON2_CSV", "OAEI2014BOOKS"*/};
-    final private String[] algorithmsListData = {"UNSUPERVISED:WOMBATSIMPLEONE","UNSUPERVISED:WOMBATSIMPLE","SUPERVISED_BATCH:WOMBATSIMPLE"};
+    final private String[] algorithmsListData = {"UNSUPERVISED:TYPEDRIVENWOMBATSIMPLE","UNSUPERVISED:WOMBATSIMPLE","SUPERVISED_BATCH:WOMBATSIMPLE"};
 
     private static final int folds=10;
     private static final boolean crossValidate=false;

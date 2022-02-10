@@ -1,3 +1,0 @@
-2022-01-10 08:20:24,905 main INFO Log4j appears to be running in a Servlet environment, but there's no log4j-web module available. If you want better web container support, please add the log4j-web JAR to your web archive or server lib directory.
-2022-01-10 08:20:24,909 main WARN Unable to instantiate org.fusesource.jansi.WindowsAnsiOutputStream
-2022-01-10 08:20:24,912 main WARN Unable to instantiate org.fusesource.jansi.WindowsAnsiOutputStream

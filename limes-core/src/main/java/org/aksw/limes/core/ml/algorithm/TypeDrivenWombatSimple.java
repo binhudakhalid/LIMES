@@ -51,11 +51,11 @@ import java.util.TreeSet;
  * @author Mohamed Sherif (sherif@informatik.uni-leipzig.de)
  * @version Jun 7, 2016
  */
-public class WombatSimpleOne extends AWombat {
+public class TypeDrivenWombatSimple extends AWombat {
 
-    private static final Logger logger = LoggerFactory.getLogger(WombatSimpleOne.class);
+    private static final Logger logger = LoggerFactory.getLogger(TypeDrivenWombatSimple.class);
 
-    private static final String ALGORITHM_NAME = "Wombat Simple One";
+    private static final String ALGORITHM_NAME = "Type Driven Wombat Simple";
 
     private static final int activeLearningRate = 3;
 
@@ -78,9 +78,9 @@ public class WombatSimpleOne extends AWombat {
     Set<String> targetPropertiesWithAtomicMeasuresVectorSpace =  new HashSet<>();
 
     /**
-     * WombatSimpleOne constructor.
+     * TypeDrivenWombatSimple constructor.
      */
-    protected WombatSimpleOne() {
+    protected TypeDrivenWombatSimple() {
         super();
     }
 

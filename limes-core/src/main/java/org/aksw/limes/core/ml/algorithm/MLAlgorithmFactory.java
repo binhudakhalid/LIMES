@@ -30,7 +30,7 @@ public class MLAlgorithmFactory {
 
     public static final String EAGLE = "eagle";
     public static final String WOMBAT_SIMPLE = "wombat simple";
-    public static final String WOMBAT_SIMPLE_ONE = "wombat simple one";
+    public static final String TYPE_DRIVEN_WOMBAT_SIMPLE_ONE = "type driven wombat simple";
     public static final String WOMBAT_COMPLETE = "wombat complete";
     public static final String LION = "lion";
     public static final String EUCLID_LINEAR = "euclid linear";
@@ -56,8 +56,8 @@ public class MLAlgorithmFactory {
         if (name.equalsIgnoreCase(WOMBAT_SIMPLE)) {
             return WombatSimple.class;
         }
-        if (name.equalsIgnoreCase(WOMBAT_SIMPLE_ONE)) {
-            return WombatSimpleOne.class;
+        if (name.equalsIgnoreCase(TYPE_DRIVEN_WOMBAT_SIMPLE_ONE)) {
+            return TypeDrivenWombatSimple.class;
         }
         if (name.equalsIgnoreCase(WOMBAT_COMPLETE)) {
             return WombatComplete.class;
