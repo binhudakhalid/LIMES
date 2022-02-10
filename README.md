@@ -1,3 +1,11 @@
+
+# LIMES - Link Discovery Framework for Metric Spaces.
+
+[![Build Status](https://github.com/dice-group/LIMES/actions/workflows/run-tests.yml/badge.svg?branch=master&event=push)](https://github.com/dice-group/LIMES/actions/workflows/run-tests.yml)
+[![DockerHub](https://badgen.net/badge/dockerhub/dicegroup%2Flimes/blue?icon=docker)](https://hub.docker.com/r/dicegroup/limes)
+[![GNU Affero General Public License v3.0](https://badgen.net/badge/license/GNU_Affero_General_Public_License_v3.0/orange)](./LICENSE)
+![Java 1.8+](https://badgen.net/badge/java/1.8+/gray?icon=maven)
+
 # Guide: How to run example of Type Driven Simple Wombat
 
 #### Step 1:  Clone the repo and change branch to typeDrivenWombatSimple
@@ -6,6 +14,7 @@
 #### Step 2: Build lIMES
 Go to limes-core directory and run
 
+    cd LIMES/limes-core
     mvn clean package shade:shade -Dcheckstyle.skip=true -Dmaven.test.skip=true
     
 #### Step 3: Start the lIMES as a server
@@ -13,7 +22,10 @@ Go to limes-core directory and run
     java -jar target/limes-core-1.7.6-SNAPSHOT.jar -s
     
 ### Step 4: 
-Set the path of source and target data set in AmazonAndGoogleProductExampleConfig.xml. This file is located in typeDrivenwombatSimpleExample folder.
+Go to typeDrivenwombatSimpleExample folder
+
+Set the path of source and target data set in AmazonAndGoogleProductExampleConfig.xml. This data set is located in the same folder.
+
 Set path for source on line 44
 
     <SOURCE>
@@ -35,13 +47,6 @@ Source and target data file can be found in TypeDrivenSimpleWombat folder
 
 After running these step you will get the result.
 
-
-# LIMES - Link Discovery Framework for Metric Spaces.
-
-[![Build Status](https://github.com/dice-group/LIMES/actions/workflows/run-tests.yml/badge.svg?branch=master&event=push)](https://github.com/dice-group/LIMES/actions/workflows/run-tests.yml)
-[![DockerHub](https://badgen.net/badge/dockerhub/dicegroup%2Flimes/blue?icon=docker)](https://hub.docker.com/r/dicegroup/limes)
-[![GNU Affero General Public License v3.0](https://badgen.net/badge/license/GNU_Affero_General_Public_License_v3.0/orange)](./LICENSE)
-![Java 1.8+](https://badgen.net/badge/java/1.8+/gray?icon=maven)
 
 
 ## Running LIMES
