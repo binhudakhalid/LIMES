@@ -41,7 +41,7 @@
 
 <SOURCE>
   <ID>sourceId</ID>
- <ENDPOINT>data/Amazon.csv</ENDPOINT>
+ <ENDPOINT> path to Amazon.csv</ENDPOINT>
   <VAR>?s</VAR>
   <PAGESIZE>-1</PAGESIZE>
   <RESTRICTION></RESTRICTION>
@@ -55,7 +55,7 @@
 
 <TARGET>
   <ID>targetId</ID>  
-  <ENDPOINT>data/GoogleProducts.csv</ENDPOINT>
+  <ENDPOINT> path to GoogleProducts.csv</ENDPOINT>
   <VAR>?t</VAR>
   <PAGESIZE>-1</PAGESIZE>
   <RESTRICTION></RESTRICTION>  
@@ -67,7 +67,7 @@
 </TARGET>
 
 <MLALGORITHM>
-  <NAME>type driven wombat simple</NAME>
+  <NAME>wombat simple type driven</NAME>
   <TYPE>unsupervised</TYPE>
   <PARAMETER> 
       <NAME>max execution time in minutes</NAME>

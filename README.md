@@ -1,3 +1,41 @@
+# Guide: How to run example of Type Driven Simple Wombat
+
+#### Step 1:  Clone the repo and change branch to typeDrivenWombatSimple
+    git clone https://github.com/binhudakhalid/LIMES.git --branch typeDrivenWombatSimple
+    
+#### Step 2: Build lIMES
+Go to limes-core directory and run
+
+    mvn clean package shade:shade -Dcheckstyle.skip=true -Dmaven.test.skip=true
+    
+#### Step 3: Start the lIMES as a server
+
+    java -jar target/limes-core-1.7.6-SNAPSHOT.jar -s
+    
+### Step 4: 
+Set the path of source and target data set in AmazonAndGoogleProductExampleConfig.xml. This file is located in typeDrivenwombatSimpleExample folder.
+Set path for source on line 44
+
+    <SOURCE>
+    <ID>sourceId</ID>
+    <ENDPOINT> path to Amazon.csv</ENDPOINT>
+e.g. /home/khalids/1/LIMES/wombatSimpleOneExample/Amazon.csv
+    
+Set path  for target on line 58
+
+    <TARGET>
+    <ID>targetId</ID>  
+    <ENDPOINT> path to GoogleProducts.csv</ENDPOINT>
+e.g. /home/khalids/1/LIMES/wombatSimpleOneExample/GoogleProducts.csv
+
+Source and target data file can be found in TypeDrivenSimpleWombat folder
+    
+#### Step 5: Sumbit the config file through curl
+    curl -F config_file=@AmazonAndGoogleProductExampleConfig.xml http://localhost:8080/submit
+
+After running these step you will get the result.
+
+
 # LIMES - Link Discovery Framework for Metric Spaces.
 
 [![Build Status](https://github.com/dice-group/LIMES/actions/workflows/run-tests.yml/badge.svg?branch=master&event=push)](https://github.com/dice-group/LIMES/actions/workflows/run-tests.yml)
