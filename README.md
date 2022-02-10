@@ -30,14 +30,14 @@ Set path for source on line 44
 
     <SOURCE>
     <ID>sourceId</ID>
-    <ENDPOINT> path to Amazon.csv</ENDPOINT>
+    <ENDPOINT> path to AmazonFile.csv</ENDPOINT>
 e.g. /home/khalids/1/LIMES/wombatSimpleOneExample/Amazon.csv
     
 Set path  for target on line 58
 
     <TARGET>
     <ID>targetId</ID>  
-    <ENDPOINT> path to GoogleProducts.csv</ENDPOINT>
+    <ENDPOINT> path to GoogleProductsFile.csv</ENDPOINT>
 e.g. /home/khalids/1/LIMES/wombatSimpleOneExample/GoogleProducts.csv
 
 Source and target data file can be found in TypeDrivenSimpleWombat folder
