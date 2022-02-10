@@ -47,8 +47,8 @@ import java.util.TreeSet;
 /**
  * Simple implementation of the Type Driven Wombat simple algorithm
 * Used most of the code from WombatSimple.java class (@author Mohamed Sherif (sherif@informatik.uni-leipzig.de))
-* add setProperties method
-* Modify findInitialClassifiers method
+* add setProperties() method
+* Modify findInitialClassifiers() method
 
 * @author Khalid Bin Huda Siddiqui (khalids@campus.uni-paderborn.de)
 * @author Khalid Khan (kkhan@campus.uni-paderborn.de)
@@ -235,7 +235,7 @@ public class TypeDrivenWombatSimple extends AWombat {
     /**
      * findInitialClassifiers 
      * It find initial classifier by only comparing same source data type properties to
-     * same target data type properties with respective to their atomic measure.
+     * same target data type properties with respect to their atomic measure.
      * It does not compare a string property with a date property.
      * 
      * @return list of ExtendedClassifier
@@ -285,7 +285,7 @@ public class TypeDrivenWombatSimple extends AWombat {
 					}
 				}
 
-				// vectorSpaceMeasures
+				// pointSetMeasures
 				for (String p : sourcePropertiesWithAtomicMeasuresPointSet) {
 					for (String q : targetPropertiesWithAtomicMeasuresPointSet) {
 						for (String m : pointSetMeasures) {
