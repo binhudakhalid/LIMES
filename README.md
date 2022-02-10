@@ -22,32 +22,20 @@ Go to limes-core directory and run
     java -jar target/limes-core-1.7.6-SNAPSHOT.jar -s
     
 ### Step 4: 
-Go to typeDrivenwombatSimpleExample folder
+Go to datasets folder, In this folder, you can find limes configuration file "Type-Driven-Amazon-GoogleProducts.xml" and datasets. 
 
-Set the path of source and target data set in AmazonAndGoogleProductExampleConfig.xml. This data set is located in the same folder.
-
-Set path for source on line 44
-
-    <SOURCE>
-    <ID>sourceId</ID>
-    <ENDPOINT> path to AmazonFile.csv</ENDPOINT>
-e.g. /home/khalids/1/LIMES/wombatSimpleOneExample/AmazonFile.csv
-    
-Set path  for target on line 58
-
-    <TARGET>
-    <ID>targetId</ID>  
-    <ENDPOINT> path to GoogleProductsFile.csv</ENDPOINT>
-e.g. /home/khalids/1/LIMES/wombatSimpleOneExample/GoogleProductsFile.csv
-
-Source and target data file can be found in TypeDrivenSimpleWombat folder
+    cd LIMES/limes-core/src/main/resources/datasets
     
 #### Step 5: Sumbit the config file through curl
-    curl -F config_file=@AmazonAndGoogleProductExampleConfig.xml http://localhost:8080/submit
+  
+    curl -F config_file=@Type-Driven-Amazon-GoogleProducts.xml http://localhost:8080/submit
 
 After running these step you will get the result.
 
+## Benchmarking
+Configuration files and benchmarking dataset can found in 
 
+    limes-core/src/main/resources/datasetsOne
 
 ## Running LIMES
 
