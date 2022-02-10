@@ -45,12 +45,16 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Simple implementation of the Wombat algorithm
- * Fast implementation, that is not complete
- *
- * @author Mohamed Sherif (sherif@informatik.uni-leipzig.de)
- * @version Jun 7, 2016
+ * Simple implementation of the Type Driven Wombat simple algorithm
+* Used most of the code from WombatSimple.java class (@author Mohamed Sherif (sherif@informatik.uni-leipzig.de))
+* add setProperties method
+* Modify findInitialClassifiers method
+
+* @author Khalid Bin Huda Siddiqui (khalids@campus.uni-paderborn.de)
+* @author Khalid Khan (kkhan@campus.uni-paderborn.de)
  */
+
+
 public class TypeDrivenWombatSimple extends AWombat {
 
     private static final Logger logger = LoggerFactory.getLogger(TypeDrivenWombatSimple.class);
@@ -228,7 +232,14 @@ public class TypeDrivenWombatSimple extends AWombat {
             }
         }
     }
-
+    /**
+     * findInitialClassifiers 
+     * It find initial classifier by only comparing same source data type properties to
+     * same target data type properties with respective to their atomic measure.
+     * It does not compare a string property with a date property.
+     * 
+     * @return list of ExtendedClassifier
+     */
     @Override
     protected List<ExtendedClassifier> findInitialClassifiers() {
 		logger.debug("Geting all initial classifiers ...");
@@ -237,7 +248,6 @@ public class TypeDrivenWombatSimple extends AWombat {
 		
 		
 	
-		//Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "cosine", "qgrams"));
 		Set<String> stringMeasures = new HashSet<>(Arrays.asList("jaccard", "qgrams"));
         Set<String> temporalMeasures = new HashSet<>(Arrays.asList("tmp_predecessor", "tmp_successor"));
 		Set<String> vectorSpaceMeasures = new HashSet<>(Arrays.asList("euclidean", "manhattan")); //remove geo_orthodromic 
@@ -410,42 +420,12 @@ public class TypeDrivenWombatSimple extends AWombat {
             refinementTreeRoot.print();
         }
     }
-    
+     /*
+     * This method take an instance from source & target data set and
+     * then go through to all the properties and classifiy their data type(String, Number etc)
+     */
     protected void setProperties(){
-
-    	//	System.out.println(" *k* targetCache.getNextInstance.getClass().getProperty : "
-    	//			+ targetCache.getNextInstance().getProperty("xmfo:name1"));
-    			
-    				/*
-    	
-    			TreeSet<String> sur =	 targetCache.getNextInstance().getProperty("xmfo:name1");
-    			
-    			Optional<String> firstString = sur.stream().findFirst();
-    			if(firstString.isPresent()){
-    			    String first = firstString.get();
-    			    System.out.println(" *k* firstString.get(); " + first );
-    			}
-    			
-    			Optional<String> firstString1 = sur.stream().findFirst();
-    			if(firstString1.isPresent()){
-    			    String first1 = firstString1.get();
-    			    System.out.println(" *k1* firstString1.get(); " + first1);
-    			}
-    			
-    			
-    			System.out.println(" *k* sur sur.size() : " + sur.size());
-    			System.out.println(" *k* sur : " + sur);
-    			System.out.println(" *k* sur sur.first() : " + sur.first());
-    			
-    */
-    			 
-    		 	
-    		//System.out.println(" *k* targetCache : " + targetCache);
-
-
-    		System.out.println(" * setProperties called * " );
-    		
-    		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
+     		Set<String> sourceProperties = sourceCache.getNextInstance().getAllProperties();
     		Instance instance = sourceCache.getNextInstance();
     		
     		for (String s1 : sourceProperties) {
@@ -458,9 +438,9 @@ public class TypeDrivenWombatSimple extends AWombat {
     			}
     			
     			
-    			System.out.println("Property Name:" + s1);
-    			System.out.println("Property value:" + val);
-    			System.out.println("A1 : " + CheckType.check(val));
+    			System.out.println("Property Name: " + s1);
+    			System.out.println("Property value: " + val);
+    			System.out.println("Data type: " + CheckType.check(val));
     			System.out.println("----------------------------");
 
     			if (CheckType.check(val) == "date") {
@@ -479,21 +459,13 @@ public class TypeDrivenWombatSimple extends AWombat {
     		System.out.println("sourcePropertiesWithAtomicMeasuresVectorSpace :" + sourcePropertiesWithAtomicMeasuresVectorSpace);
     		System.out.println("sourcePropertiesWithAtomicMeasuresString :" + sourcePropertiesWithAtomicMeasuresString);
 
-    // Now for target
-    		//Set<String> targetProperties00 = targetCache.getAllProperties();
-            //System.out.println("targetCache.getAllProperties(): " + targetProperties00 );
     		Set<String> targetProperties = targetCache.getAllProperties();
-
-    		//System.out.println( "*** targetCache **" + targetCache);
-    	
     		Instance ins = targetCache.getNextInstance();
     		for (String t1 : targetProperties) {
     			System.out.println("----------------------------");
     			System.out.println("t1:" + t1);
     			String val = " ";
-    		
-    			//val = sourceCache.getNextInstance();
-
+ 
     			try {
     			val =	ins.getProperty(t1).first();
     				System.out.println("+++++++++++ val : " + val );
@@ -521,11 +493,6 @@ public class TypeDrivenWombatSimple extends AWombat {
     		System.out.println("targetPropertiesWithAtomicMeasuresPointSet :" + targetPropertiesWithAtomicMeasuresPointSet);
     		System.out.println("targetPropertiesWithAtomicMeasuresVectorSpace :" + targetPropertiesWithAtomicMeasuresVectorSpace);
     		System.out.println("targetPropertiesWithAtomicMeasuresString :" + targetPropertiesWithAtomicMeasuresString);
-
-    		
-
     		
     	}
-
-
 }
