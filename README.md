@@ -6,7 +6,7 @@
 [![GNU Affero General Public License v3.0](https://badgen.net/badge/license/GNU_Affero_General_Public_License_v3.0/orange)](./LICENSE)
 ![Java 1.8+](https://badgen.net/badge/java/1.8+/gray?icon=maven)
 
-# Guide: How to run example of Type Driven Simple Wombat
+# Guide: How to run example of Type Driven Wombat Simple
 
 #### Step 1:  Clone the repo and change branch to typeDrivenWombatSimple
     git clone https://github.com/binhudakhalid/LIMES.git --branch typeDrivenWombatSimple
