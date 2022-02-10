@@ -21,7 +21,7 @@ Go to limes-core directory and run
 
     java -jar target/limes-core-1.7.6-SNAPSHOT.jar -s
     
-### Step 4: 
+#### Step 4: 
 Go to datasets folder, In this folder, you can find limes configuration file "Type-Driven-Amazon-GoogleProducts.xml" and datasets. 
 
     cd LIMES/limes-core/src/main/resources/datasets
