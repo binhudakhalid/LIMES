@@ -6,6 +6,11 @@
 [![GNU Affero General Public License v3.0](https://badgen.net/badge/license/GNU_Affero_General_Public_License_v3.0/orange)](./LICENSE)
 ![Java 1.8+](https://badgen.net/badge/java/1.8+/gray?icon=maven)
 
+# Type Driven wombat simple
+
+The implementation of type Driven wombat simple can be found at ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/TypeDrivenWombatSimple.java.***
+The class that identifies the data type of property can be found at  ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/wombat/CheckType.java.***
+
 # Guide: How to run example of Type Driven Wombat Simple
 
 #### Step 1:  Clone the repo and change branch to typeDrivenWombatSimple
