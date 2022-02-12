@@ -8,8 +8,13 @@
 
 # Type Driven wombat simple
 
-The implementation of type Driven wombat simple can be found at ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/TypeDrivenWombatSimple.java.***
-The class that identifies the data type of property can be found at  ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/wombat/CheckType.java.***
+The implementation of type Driven wombat simple can be found at 
+
+***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/TypeDrivenWombatSimple.java.***
+
+The class that identifies the data type of property can be found at  
+
+***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/wombat/CheckType.java.***
 
 # Guide: How to run example of Type Driven Wombat Simple
 
