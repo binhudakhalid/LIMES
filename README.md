@@ -6,13 +6,13 @@
 [![GNU Affero General Public License v3.0](https://badgen.net/badge/license/GNU_Affero_General_Public_License_v3.0/orange)](./LICENSE)
 ![Java 1.8+](https://badgen.net/badge/java/1.8+/gray?icon=maven)
 
-# Type Driven wombat simple
+# Type Driven Wombat Simple
 
-The implementation of Type-Driven Wombat Simple can be found at 
+1- The implementation of Type-Driven Wombat Simple can be found at 
 
 ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/TypeDrivenWombatSimple.java.***
 
-The class that identifies the data type of property can be found at  
+2- The class that identifies the data type of property can be found at  
 
 ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/wombat/CheckType.java.***
 
@@ -50,13 +50,13 @@ Configuration files and benchmarking dataset can found in
 
     limes-core/src/main/resources/datasetsOne
     
-![Alt text](/screenshot/benchmark.png?raw=true "Title")
+![Alt text](/screenshot/benchmark1.png?raw=true "Title")
 
 ## Configuration File
 
 The sample configuration file can found at 
 
-***F:\Hub\LIMES\limes-core\src\main\resources\datasets\Type-Driven-Amazon-GoogleProducts.xml***
+***limes-core/src/main/resources/datasets/Type-Driven-Amazon-GoogleProducts.xml***
 
 ![Alt text](/screenshot/configurationFile.png?raw=true "Title")
 
