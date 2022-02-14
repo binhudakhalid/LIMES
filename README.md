@@ -44,14 +44,6 @@ After running these step you will get the result.
 
 ![Alt text](/screenshot/result.png?raw=true "Title")
 
-
-## Benchmarking
-Configuration files and benchmarking dataset can found in 
-
-    limes-core/src/main/resources/datasetsOne
-    
-![Alt text](/screenshot/benchmark1.png?raw=true "Title")
-
 ## Configuration File
 
 The sample configuration file can found at 
@@ -59,6 +51,14 @@ The sample configuration file can found at
 ***limes-core/src/main/resources/datasets/Type-Driven-Amazon-GoogleProducts.xml***
 
 ![Alt text](/screenshot/configurationFile.png?raw=true "Title")
+
+
+## Benchmarking
+Configuration files dataset for benchmarking can be found in 
+
+    limes-core/src/main/resources/datasetsOne
+    
+![Alt text](/screenshot/benchmark1.png?raw=true "Title")
 
 ## Running LIMES
 
