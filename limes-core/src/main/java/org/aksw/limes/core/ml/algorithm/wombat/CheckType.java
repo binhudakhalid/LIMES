@@ -13,7 +13,6 @@ import java.util.List;
  * @author Khalid Khan (kkhan@campus.uni-paderborn.de)
  * 
  */
-
 public class CheckType {
 
 /**
@@ -29,26 +28,22 @@ public class CheckType {
 		if (checkDate(trimInput) == "date") {
 			return "date";
 		}
-
 		// Check if its a point. eg (24,55)
 		if (checkPoint(trimInput) == "point") {
 			return "point";
 		}
-		
-
 		// Check if its a number. eg 33 or 33.4
 		if (checkNumber(trimInput) == "int" || checkNumber(trimInput) == "double") {
 			return "number";
 		}
-		
 		return "string";
-
 	}
 /**
  * Method to check if the value is numeric
  * 
+ * @param str the value
+ * @return true if the value is numeric
  */
-
 	public static boolean isNumeric(String str) {
 		try {
 			Double.parseDouble(str);
@@ -58,10 +53,10 @@ public class CheckType {
 		}
 	}
 
-
 /**
  * Method to check if the value is a String
- * 
+ * @param str the value
+ * @return "int" if the value in integer
  */
 	private static String checkNumber(String i) {
 		 
@@ -71,14 +66,13 @@ public class CheckType {
 		if (isNumeric(i)) {
 			return "double";
 		}
-
 		return i;
 	}
 
-	
 /**
  * Method to check if the value is a point
- * 
+ * @param i the value
+ * @return "point" if the value is a point
  */
 	static String checkPoint(String i) {
 
@@ -107,7 +101,8 @@ public class CheckType {
 
 /**
  * Method to check if the value is a date
- * 
+ * @param string the value
+ * @return "date" if the given value can be parse as a date 
  */
 	public static String checkDate(String string) {
 
@@ -123,7 +118,5 @@ public class CheckType {
 			}
 		}
 		return "notADate";
-
 	}
-
 }

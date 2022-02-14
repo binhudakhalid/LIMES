@@ -47,7 +47,7 @@ import java.util.TreeSet;
 /**
  * Simple implementation of the Type Driven Wombat simple algorithm
 * Used most of the code from WombatSimple.java class (@author Mohamed Sherif (sherif@informatik.uni-leipzig.de))
-* add setProperties() method
+* add new method called setProperties() 
 * Modify findInitialClassifiers() method
 
 * @author Khalid Bin Huda Siddiqui (khalids@campus.uni-paderborn.de)
