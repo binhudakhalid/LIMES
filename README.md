@@ -52,6 +52,14 @@ Configuration files and benchmarking dataset can found in
     
 ![Alt text](/screenshot/benchmark.png?raw=true "Title")
 
+## Configuration File
+
+The sample configuration file can found at 
+
+***F:\Hub\LIMES\limes-core\src\main\resources\datasets\Type-Driven-Amazon-GoogleProducts.xml***
+
+![Alt text](/screenshot/configurationFile.png?raw=true "Title")
+
 ## Running LIMES
 
 To bundle LIMES as a single jar file, do
