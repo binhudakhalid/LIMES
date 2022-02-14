@@ -8,7 +8,7 @@
 
 # Type Driven wombat simple
 
-The implementation of type Driven wombat simple can be found at 
+The implementation of Type-Driven Wombat Simple can be found at 
 
 ***limes-core/src/main/java/org/aksw/limes/core/ml/algorithm/TypeDrivenWombatSimple.java.***
 
@@ -18,7 +18,7 @@ The class that identifies the data type of property can be found at
 
 # Guide: How to run example of Type Driven Wombat Simple
 
-#### Step 1:  Clone the repo and change branch to typeDrivenWombatSimple
+#### Step 1:  Clone the repository and change branch to typeDrivenWombatSimple
     git clone https://github.com/binhudakhalid/LIMES.git --branch typeDrivenWombatSimple
     
 #### Step 2: Build lIMES
